@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Les 2:Opdracht planeet</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+
+        <h3>Hoeveel weeg ik op een andere planeet?</h3>
+
+        <div class="row">
+            <div class="col-md-12">
+                <img id="imgPlaneet" src="img/vraagteken.jpg">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div id="mijnGewicht"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* function berekenGewicht() { */
+        let gew = parseFloat(prompt("Geef je gewicht in.", ""))
+        let tot, planeet, naam;
+
+        keuzetekst = "Bereken mijn gewicht op...\nA. Maan\nB. Jupiter\nC. Mars\nD. Venus\nE. Neptunus"
+        keuze = prompt(keuzetekst, "")
+
+        switch (keuze.toUpperCase()) {
+            case "A":
+                tot = gew * 0.166;
+                planeet = 'img/maan.jpg';
+                naam = 'maan';
+                break;
+            case "B":
+                tot = gew * 2.36;
+                planeet = 'img/jupiter.jpg';
+                naam = 'jupiter';
+                break;
+            case "C":
+                tot = gew * 0.39;
+                planeet = 'img/mars.jpg';
+                naam = 'mars';
+                break;
+            case "D":
+                tot = gew * 0.9;
+                planeet = 'img/venus.jpg';
+                naam = 'venus';
+                break;
+            case "E":
+                tot = gew * 1.12;
+                planeet = 'img/neptunus.jpg';
+                naam = 'neptunus';
+                break;
+            default:
+                tot = 0;
+        }
+
+        if (tot == 0) {
+            document.getElementById('mijnGewicht').innerHTML = "Verkeerde keuze!";
+        } else {
+            tmp = 'Je koos voor "' + naam + '". Je weegt hier ' + tot + ' kg. i.p.v. ' + gew + ' kg.';
+            document.getElementById('mijnGewicht').innerHTML = tmp;
+            document.getElementById('imgPlaneet').src = planeet;
+        }
+
+        /*  } */
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+</body>
+
+</html>

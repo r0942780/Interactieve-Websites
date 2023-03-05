@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=sc, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let personen = ['Sven,', 200, false] //array gebruiken in project
+        //console.log(personen[0]) // 1 = 200
+        //; is optioneel bij javascript
+        //console.log(personen)
+        personen.push('Hamburgers')
+        console.log(personen)
+        
+        //gebruiken voor PE project (gebruikers)
+        //for (let i = 0; i < personen.length; i++) {
+        //    document.write('<p>' + personen[i] + '</p>')         
+        //}
+
+        personen.forEach(el => {    //el = element
+            console.log(el)   
+        });
+
+        personen.forEach(el, index => {    //met index
+            console.log(el,) //hiermee kun je dingen tonen, niet assignen
+            personen [index] = '100'   
+        });
+
+        let x = 0
+        while (x < 10) { // (x < personen.length)
+            document.write('<p>test</p>')// of ('<p> + personen[x]</p>')
+            x++
+        }
+
+
+        
+    </script>
+</body>
+</html>

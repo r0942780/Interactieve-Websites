@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 2: Oefening kwadraat (switch)</title>
+</head>
+<body>
+    <script>
+        let getal = parseInt(prompt('Geef een getal in tussen 10 en 20'))
+        switch (true) {
+            case getal < 10:
+            alert('Dit getal is kleiner dan 10.');
+            break;
+            case getal > 20:
+            alert('Dit getal is groter dan 20.');
+            break;
+            case getal > 10 && getal < 20: 
+            resultaat = Math.pow(getal, 2)
+            alert('Het kwadraat van dit getal ' + getal + ' is ' + resultaat);
+            break;      
+        }
+    </script>
+</body>
+</html>
