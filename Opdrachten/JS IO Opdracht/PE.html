@@ -28,41 +28,73 @@
                   </div>
                   <div class="row g-3">
                     <div class="col-sm-4">
-                      <label for="naam" class="form-label">Gebruikersnaam</label>
+                      <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
                       <input type="text" class="form-control" id="gebruikersnaam" placeholder="u911236">
                     </div>
                     <div class="col-sm-4">
-                      <label for="naam" class="form-label">E-mailadres</label>
-                      <input type="email" class="form-control" id="gebruikersnaam" placeholder="mail.example.be">
+                      <label for="email" class="form-label">E-mailadres</label>
+                      <input type="email" class="form-control" id="email" placeholder="mail.example.be">
                     </div>
                   </div>
                   <div class="row g-3">
                     <div class="col-sm-4">
-                      <label for="naam" class="form-label">Wachtwoord</label>
+                      <label for="wachtwoord" class="form-label">Wachtwoord</label>
                       <input type="text" class="form-control" id="wachtwoord" placeholder="">
                       <p>Je wachtwoord moet minstens 8 tekens lang zijn</p>
                     </div>
                     <div class="col-sm-4">
-                      <label for="naam" class="form-label">Herhaal wachtwoord</label>
+                      <label for="wachtwoord" class="form-label">Herhaal wachtwoord</label>
                       <input type="text" class="form-control" id="wachtwoord" placeholder="">
                     </div>
                   </div>
                   <div class="row g-3">
                     <div class="col-sm-8">
-                      <label for="naam" class="form-label">Adres</label>
-                      <input type="text" class="form-control" id="wachtwoord" placeholder="Uw adres en huisnummer">
+                      <label for="adres" class="form-label">Adres</label>
+                      <input type="text" class="form-control" id="adres" placeholder="Uw adres en huisnummer">
                     </div>
                   </div>
                   <div class="row g-3">
                     <div class="col-md-3">
+                      <!-- https://codepen.io/JacobLett/pen/ErBqGE -->
                       <label for="land" class="form-label">Land</label>
-                      <input type="text" class="form-select" id="land" placeholder="Kies een land">
+                      <select name="land" id="land" class="form-select">
+                        <option disabled selected="selected">Kies een land</option>
+                        <option value="BE">België</option>
+                        <option value="NL">Nederland</option>
+                      </select>
                     </div>
+                    
                     <div class="col-md-3">
-                      <label for="inputState" class="form-label">Provincie</label>
-                      <select id="inputState" class="form-select" placeholder="Kies een provincie">
-                        <option selected>Kies een provincie</option>
-                        <option>...</option>
+                      <label for="provincie" class="form-label">Provincie</label>
+                      <select id="provincie" class="form-select">
+                        <div class="be" style="display:none;">
+                          <option selected>Kies een provincie</option>
+                          <option value="AN">Antwerpen</option>
+                          <option value="LI">Limburg</option>
+                          <option value="OV">Oost-Vlaanderen</option>
+                          <option value="VB">Vlaams-Brabant</option>
+                          <option value="WV">West-Vlaanderen</option>
+                          <option value="HE">Henegouwen</option>
+                          <option value="LU">Luik</option>
+                          <option value="LUX">Luxemburg</option>
+                          <option value="NA">Namen</option>
+                          <option value="WB">Waals-Brabant</option>
+                        </div>
+                      </select>
+                      <div class="nl" style="display:none;">
+                        <option value="GR">Groningen</option>
+                        <option value="FR">Friesland</option>
+                        <option value="DR">Drenthe</option>
+                        <option value="OV">Overijssel</option>
+                        <option value="FL">Flevoland</option>
+                        <option value="GE">Gelderland</option>
+                        <option value="UT">Utrecht</option>
+                        <option value="NH">Noord-Holland</option>
+                        <option value="ZH">Zuid-Holland</option>
+                        <option value="ZE">Zeeland</option>
+                        <option value="NB">Noord-Brabant</option>
+                        <option value="LIM">Limburg</option>
+                      </div>
                       </select>
                     </div>
                     <div class="col-md-2">
@@ -172,5 +204,29 @@
             alert(resultaat)
         }
     </script>
+
+    <script>
+      // https://codepen.io/JacobLett/pen/ErBqGE
+$(document).ready(function() {
+  // when the state dropdown changes
+  $("#land").change(function () {
+
+    // check land
+    if ($(this).val() == "BE") {
+      // België
+      $(".be").show();
+      $(".nl").hide();
+      $(".nl select").val("");
+    } else if ($(this).val() == "NL") {
+      // Nederland
+      $(".be").hide();
+      $(".nl").show();
+      $(".be select").val("");
+    }
+  }); // on country select change END
+  // document ready  
+});
+</script>
+
 </body>
 </html>
