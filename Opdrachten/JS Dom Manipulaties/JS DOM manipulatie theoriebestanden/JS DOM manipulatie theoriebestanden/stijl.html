@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stijl</title>
+
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <p id="p1">Hello World!</p>
+    <p id="p2">Hello World!</p>
+    <button id="btnKnop">Stijl veranderen</button>
+
+    <script>
+        const btn = document.querySelector('#btnKnop');
+
+        let stijlVeranderen = () => {
+            document.getElementById("p2").style.color = "darkred";
+            document.getElementById("p2").style.fontFamily = "Verdana";
+            document.getElementById("p2").style.fontSize = "60pt";
+        }
+
+        btn.addEventListener('click', stijlVeranderen, false);
+    </script>
+</body>
+
+</html>

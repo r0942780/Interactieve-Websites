@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lijst</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+
+    <script>
+        let ul = document.createElement('ul');
+        let li;
+
+        // UL toevoegen aan body
+        document.body.appendChild(ul);
+
+        // listitem aanmaken, vullen en toevoegen aan UL
+        li = document.createElement('li');
+        li.textContent = "Appel";
+        ul.appendChild(li);
+
+        li = document.createElement('li');
+        li.textContent = "Peer";
+        ul.appendChild(li);
+    </script>
+</body>
+
+</html>

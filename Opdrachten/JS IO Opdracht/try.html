@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="functie()">Druk mij</button>
+    <div class="tom"></div>
+    <script>
+        function functie() {
+            let tom = document.querySelector('tom')
+            let flag = false;
+            if (flag == true)
+            tom.innerHTML = "<div class='alert alert-succes' role='alert'>A simple primary alert—check it out!</div>"
+            else
+            tom.innerHTML = "<div class='alert alert-danger' role='alert'>A simple primary alert—check it out!</div>
+        }
+    </script>
+</body>
+</html>

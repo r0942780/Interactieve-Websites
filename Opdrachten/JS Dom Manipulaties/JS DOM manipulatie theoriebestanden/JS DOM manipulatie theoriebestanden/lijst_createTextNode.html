@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="nl">
+
+<head>
+    <title>document.createTextNode()</title>
+
+    <link rel="shortcut icon" href="#">
+</head>
+<!-- Dit is een commentaar node -->
+
+<body>
+    <h2>document.createTextNode</h2>
+    <p>Inhoud van de tekst node</p>
+    <input type="text" id="txtElement" value="Een nieuwe paragraaf" />
+
+    <button id="btnKnop1">Maak</button>
+    <p>(Gebruik de Developer Tools om het resultaat te zien)</p>
+    <div id="divResult"></div>
+
+    <script>
+        const res = document.querySelector('#divResult');
+        const but = document.querySelector('#btnKnop1');
+        let count = 1;
+
+        // Voer script uit zodra de pagina helemaal geladen is
+        window.addEventListener('load', () => {
+            but.addEventListener('click', () => {
+                // 1. maak nieuw p-element.
+                const newElement = document.createElement('p');
+                newElement.id = 'paragraaf-' + count;
+
+                // 2. maak nieuwe textnode op basis van tekst in het tekstveld
+                const nodeTekst = document.querySelector('#txtElement').value;
+                const newNode = document.createTextNode(nodeTekst);
+
+                // 3. Voeg de tekst toe aan het nieuwe element
+                newElement.appendChild(newNode);
+
+                // 4. Log check de Developer Tools
+                console.log(newNode);
+                console.log(newElement);
+                // res.innerText += '<div>De node ' + newElement.outerHTML + ' is gemaakt</div>';
+
+                // 5. Voeg het nieuwe element toe aan de divResult
+                res.appendChild(newElement);
+
+                count++;
+            })
+        })
+    </script>
+
+
+</body>
+
+</html>

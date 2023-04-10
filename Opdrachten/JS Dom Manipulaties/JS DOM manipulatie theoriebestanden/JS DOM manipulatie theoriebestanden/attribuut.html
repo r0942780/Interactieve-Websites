@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attribuut</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <img id="afbeelding" src="img/mvr.jpg" />
+    <br />
+    <button id="btnKnop">Foto veranderen</button>
+
+    <script>
+        const btn = document.querySelector("#btnKnop");
+
+        btn.addEventListener("click", function() {
+            document.querySelector("#afbeelding").src = "img/mvr.png";
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementsByClassName</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <p class="fiets">Geen nummerplaat</p>
+    <p class="auto">1 GTY-908</p>
+    <p class="auto">1 RDS-123</p>
+    <p class="auto">1 GXF-998</p>
+    <p class="auto">1 MXD-153</p>
+    <p class="vrachtwagen">1 MSD-456</p>
+
+    <p id="resultaat"></p>
+    <p id="resultaatAll"></p>
+
+    <script>
+        let nrs = new Array();
+        let autos = document.getElementsByClassName("auto");
+
+        document.getElementById('resultaat').innerHTML =
+            'De eerste nummerplaat van een auto is : ' + autos.item(0).innerHTML;
+
+        // We verzamelen alle nr-platen waar als klasse auto is gebruikt
+        for (let nrpl of autos) {
+            // Toevoegen achteraan de array
+            // nrs.push(nrpl.innerHTML);
+            nrs.push(nrpl.textContent);
+        }
+
+        // We lijsten alle nummerplaten uit de array op
+        // document.getElementById('resultaatAll').innerHTML = 'Alle nummerplaten zijn: ' + nrs.join(' *** ');
+        document.getElementById('resultaatAll').textContent = 'Alle nummerplaten zijn: ' + nrs.join(' *** ');
+    </script>
+</body>
+
+</html>

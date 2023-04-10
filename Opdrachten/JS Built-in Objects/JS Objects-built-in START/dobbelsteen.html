@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let start = Date.now();
+        let aantal_zes_geworpen = 0;
+        let dobbelstenen = [];
+
+        for (let i = 0; i < 1000000; i++) {
+            let random_getal = Math.floor(Math.random() * 6) + 1;
+            dobbelstenen.push(random_getal) // zo steek je dat in de array
+            if (random_getal == 6) {
+                aantal_zes_geworpen++
+            }          
+        }
+
+        let timeTaken = Date.now() - start // deze tijd is later dan de eerste dus moet je de eerste hiervan aftrekken
+        console.log(`Je goode ${aantal_zes_geworpen} keer een 6 in ${timeTaken} milliseconden.`)
+    </script>
+</body>
+</html>

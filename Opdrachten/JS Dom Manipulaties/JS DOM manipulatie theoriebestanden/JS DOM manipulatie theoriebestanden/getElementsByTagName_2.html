@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementsByTagName</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div id="fruit">
+        <p>Appel</p>
+        <p>Peer</p>
+        <p>Kiwi</p>
+    </div>
+
+    <p id="resultaat"></p>
+
+    <script>
+        let x = document.getElementById("fruit");
+        let y = x.getElementsByTagName('p');
+        // Korte schrijfwijze
+        // let x = document.getElementById("fruit").getElementsByTagName('p');
+
+        res = document.getElementById("resultaat");
+        // res.innerHTML = "De tekst van het tweede item is : " + y.item(1).innerHTML;
+        res.textContent = "De tekst van het tweede item is : " + y.item(1).textContent;
+
+        // Alle HTML-items overlopen uit getElementsByTagName
+        for (let i = 0; i < y.length; i++) {
+            console.log("De tekst van item " + (i + 1) + " is : " + y.item(i).textContent);
+            // ShowResults(y[i].value);
+        }
+    </script>
+</body>
+
+</html>

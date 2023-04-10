@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementsByTagName</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <p>Eerste item</p>
+    <p>Tweede item</p>
+    <p>Derde item</p>
+    <p id="res1"></p>
+    <p id="res2"></p>
+    <p id="aantal"></p>
+    <script>
+        let x = document.getElementsByTagName("p");
+
+        // We gebruiken de methode HTMLCollection.item()
+        document.getElementById('res1').innerHTML =
+            'De tekst van de eerste p-tag zit op index 0: ' + x.item(0).innerHTML;
+
+        // Alternatief via de rechte haken[] i.p.v. via item()
+        document.getElementById('res2').innerHTML =
+            'De tekst van de derde p-tag is : ' + x[2].innerHTML;
+
+        // We vragen de property length op van de HTMLCollection 
+        /* document.getElementById('aantal').innerHTML =
+            'We hebben ' + x.length + ' p-elementen gevonden.'; */
+        document.getElementById('aantal').textContent =
+            'We hebben ' + x.length + ' p-elementen gevonden.';
+    </script>
+
+</body>
+
+</html>

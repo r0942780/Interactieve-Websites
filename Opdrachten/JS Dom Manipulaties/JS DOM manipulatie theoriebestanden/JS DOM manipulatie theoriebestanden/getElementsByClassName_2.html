@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="nl">
+
+<head>
+    <link rel="shortcut icon" href="#">
+</head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>getElementsByClassName</title>
+
+<style>
+    .geel {
+        background-color: yellow;
+    }
+</style>
+
+<link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <h2>document.getElementsByClassName()</h2>
+
+    <p class="geel">De eerste paragraaf</p>
+    <p>De tweede paragraaf</p>
+    <p class="geel">De derde paragraaf</p>
+    <p>De vierde paragraaf</p>
+
+    <button id="btnKnop1">Welke paragrafen zijn geel?</button>
+    <div id="divResult"></div>
+
+
+    <script>
+        // Voer script uit zodra de pagina helemaal geladen is.
+        window.addEventListener('load', () => {
+            // Zo vermijden we dat het document.getElementById steeds in de lus aanspreken 
+            const el_res = document.getElementById('divResult');
+
+            // selecteer alle elementen met de klasse 'geel' op de pagina.
+            document.getElementById('btnKnop1').addEventListener('click', () => {
+                const geel = document.getElementsByClassName('geel');
+
+                for (let i = 0; i < geel.length; i++) {
+                    el_res.innerHTML += geel.item(i).innerHTML + '<br />';
+                    // el_res.textContent += geel.item(i).textContent + '<br />';
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

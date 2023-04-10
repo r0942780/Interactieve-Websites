@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementById</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <p id="vak">Interactieve websites</p>
+    <!-- Een ID moet uniek zijn, verwerkt enkel de eerste die hij tegenkomt -->
+    <p id="vak">Statische websites</p>
+
+    <p class="test">Mobiele applicaties</p>
+
+    <script>
+        const waarde = document.querySelector("#vak").textContent;
+        const test = document.querySelector(".test").textContent;
+
+        console.log('Gevonden met id "vak": ' + waarde);
+        console.log('Gevonden met class "test": ' + test);
+    </script>
+</body>
+
+</html>

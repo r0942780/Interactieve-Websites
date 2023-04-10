@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lijst met array</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div id="fruit"></div>
+
+    <script>
+        let array = ["Appel", "Peer", "Kiwi", "Banaan"];
+        let fruitdiv = document.querySelector("#fruit");
+
+        let ul = document.createElement('ul');
+        // We voegen de UL toe aan de div "fruit"
+        fruitdiv.appendChild(ul);
+
+        // We doorlopen onze array en voegen alle items in de array als listitms toe aan de ul
+        for (let i = 0; i < array.length; i++) {
+            let li = document.createElement('li');
+            ul.appendChild(li).textContent = array[i];
+        }
+
+        // Of met de forEach...
+        array.forEach((val, key) => {
+            let li = document.createElement('li');
+            ul.appendChild(li).textContent = array[key];
+        });
+    </script>
+</body>
+
+</html>

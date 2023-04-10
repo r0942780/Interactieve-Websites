@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inner HTML</title>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div id="inhtml"><span>Hello <span style="display: none;">World</span></span>
+    </div>
+    <div id="intxt"><span>Hello <span style="display: none;">World</span></span>
+    </div>
+    <div id="txtcont"><span>Hello <span style="display: none;">World</span></span>
+    </div>
+
+    <script>
+        console.log(document.querySelector("#inhtml").innerHTML);
+        console.log(document.querySelector("#intxt").innerText);
+        console.log(document.querySelector("#txtcont").textContent);
+
+        /*
+        document.querySelector("#inhtml").innerHTML = "<strong>Kom ik vet op het scherm?</strong>";
+        document.querySelector("#intxt").innerText = "<strong>Kom ik vet op het scherm?</strong>";
+        document.querySelector("#txtcont").textContent = "<strong>Kom ik vet op het scherm?</strong>";
+        */
+    </script>
+</body>
+
+</html>
