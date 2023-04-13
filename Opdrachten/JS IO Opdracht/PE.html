@@ -162,7 +162,7 @@
                   </div>
                   <div class="alert alert-success" role="alert">
                     <h4>Goed gedaan!</h4>
-                    <p>Aww yeah, je werd geregistreerd</p>
+                    <p>Aww yeah, je werd geregistreerd.</p>
                   </div>
                   <div id="error-alert" class="alert alert-danger" style="display: none;" role="alert">
                     <h4>Yikes, errors..</h4>
@@ -180,78 +180,95 @@
       submitButton.addEventListener('click', () => {validateForm();
       });
       function validateForm() {
-      console.log("validateForm called"); 
-      const errors = [];      
+      console.log("validateForm called");   
+      const errors = [];
 
-      checkEmptyField("voornaam", "voornaam", errors, "danger");
-      checkEmptyField("naam", "naam", errors, "danger");
-      checkEmptyField("gebruikersnaam", "gebruikersnaam", errors, "danger");
-      checkEmptyField("adres", "adres", errors, "danger");
-      checkEmptyFieldLandField("land", "land", errors, "danger");
-      checkEmptyFieldLandField("provincie", "provincie", errors, "danger");
-      validateEmail("email", "E-mailadres", errors, "danger");
+      const checks = [
+        { veld: "voornaam", melding: "voornaam" },
+        { veld: "naam", melding: "naam" },
+        { veld: "gebruikersnaam", melding: "gebruikersnaam" },
+        { veld: "adres", melding: "adres" },
+        ];
+
+        for (const { veld, melding } of checks) {
+        const [veldErrors, alertType] = checkEmptyField(veld, melding);
+        errors.push(...veldErrors);
+      }
+
+      checkEmptyFieldLandveld("land", "land", errors, "danger");
+      checkEmptyFieldLandveld("provincie", "provincie", errors, "danger");
+
+      const emailcheck = [
+        { melding: "E-mailadres" },
+        ];
+
+        for (const { melding } of emailcheck) {
+        const [veldErrors, alertType] = validateEmail("E-mailadres");
+        errors.push(...veldErrors);
+      }
+
+      // validateEmail("E-mailadres");
       validatePassword("wachtwoord", "wachtwoord", errors, "danger");
       validateRepeatPassword("herhaalWachtwoord", "herhaal wachtwoord", errors, "danger");
       checkPC("postcode", "postcode", errors, "danger");
       validatePayment("paymentMethod");
       validateTerms("voorwaarden", "voorwaarden", errors, "danger");
 
-      if (errors.length > 0) {
+    if (errors.length > 0) {
     const errorMessage = "<ul class='list-unstyled'><li>" + errors.join("</li><li>") + "</li></ul>";
     const alertBox = document.getElementById("error-alert");
     alertBox.innerHTML = errorMessage;
     alertBox.style.display = "block";
     return false;
-  } else {
+  } else if (errors.length == 0) {
+    const alertBox = document.querySelector(".alert-success");
+    alertBox.querySelector("p").textContent;
+    alertBox.style.display = "block";
     return true;
   }
   }
 
 // https://www.w3schools.com/howto/howto_js_validation_empty_input.asp
 
-// function checkEmptyField(field, notification, errorArray, alertType) {
-//   const value = document.getElementById(field).value.trim();
-//   if (value === "") {
-//     errorArray.push(`Het veld ${notification} is vereist.`);
-//   }
-// }
-
-function checkEmptyField(field, notification, errorArray, alertType) {
-  const value = document.getElementById(field).value.trim();
+function checkEmptyField(veld, melding) {
+  const value = document.getElementById(veld).value.trim();
+  const errorArray = [];
+  const alertType = "danger";
 
   if (value === "") {
-    errorArray.push(`Het veld ${notification} is vereist.`);
+    errorArray.push(`Het veld ${melding} is vereist.`);
   }
+  return [errorArray, alertType];
 }
 
-function checkEmptyFieldLandField(field, notification, errorArray, alertType) {
-  const value = document.getElementById(field).value.trim();
-  const dropdown = document.getElementById(field);
+function checkEmptyFieldLandveld(veld, melding, errorArray, alertType) {
+  const value = document.getElementById(veld).value.trim();
+  const dropdown = document.getElementById(veld);
   const selectedValue = dropdown.options[dropdown.selectedIndex].value.trim();
   if (value === "" || dropdown.selectedIndex === 0) {
-    errorArray.push(`Het veld ${notification} is vereist.`);
+    errorArray.push(`Het veld ${melding} is vereist.`);
   }
 }
 
-
-// checked on https://regexr.com
-function validateEmail(field, notification, errorArray, alertType) {
-  const email = document.getElementById(field).value.trim();
+function validateEmail(melding) {
+  const email = document.getElementById("email").value.trim();
+  const errorArray = [];
+  const alertType = "danger";
   const emailRegex = /^[a-zA-Z0-9_]+([.-]?[a-zA-Z0-9_]+)*@[a-zA-Z0-9]+([.-]?[a-zA-Z0-9]+)*(\.[a-zA-Z0-9]{2,})+$/;
+
   if (email === "") {
-    errorArray.push(`Het veld ${notification} is vereist.`);
-    const alertDiv = document.createElement("div");
+    errorArray.push(`Het veld ${melding} is vereist.`);
   }
   else if (!emailRegex.test(email)) {
-    errorArray.push(`${notification} is niet correct.`);
+    errorArray.push(`${melding} is niet correct.`);
   }
-}
+  return [errorArray, alertType];
+}  
 
-
-function validatePassword(field, notification, errorArray, alertType) {
-  const value = document.getElementById(field).value.trim();
+function validatePassword(veld, melding, errorArray, alertType) {
+  const value = document.getElementById(veld).value.trim();
   if (value === "") {
-    errorArray.push(`Het veld ${notification} is vereist.`);
+    errorArray.push(`Het veld ${melding} is vereist.`);
   }
 
   if (value.length < 8) {
@@ -259,10 +276,10 @@ function validatePassword(field, notification, errorArray, alertType) {
   }
 }
 
-function validateRepeatPassword(field, notification, errorArray, alertType) {
-  const value = document.getElementById(field).value.trim();
+function validateRepeatPassword(veld, melding, errorArray, alertType) {
+  const value = document.getElementById(veld).value.trim();
   if (value === "") {
-    errorArray.push(`Het veld ${notification} is vereist.`);
+    errorArray.push(`Het veld ${melding} is vereist.`);
   }
   if (value.length < 8) {
     errorArray.push(`Herhaal wachtwoord moet ten minste 8 tekens bevatten.`);
@@ -273,19 +290,19 @@ function validateRepeatPassword(field, notification, errorArray, alertType) {
   }
 }
 
-function checkPC (field, notification, errorArray, alertType) {
-  const value = document.getElementById(field).value.trim();
+function checkPC (veld, melding, errorArray, alertType) {
+  const value = document.getElementById(veld).value.trim();
   if (value === "") {
-    errorArray.push(`Het veld ${notification} is vereist.`);
+    errorArray.push(`Het veld ${melding} is vereist.`);
   }
 
   if (value < 1000 || value > 9999) {
-    errorArray.push(`De waarde van ${notification} moet tussen 1000 en 9999 liggen.`);
+    errorArray.push(`De waarde van ${melding} moet tussen 1000 en 9999 liggen.`);
   }
 }
 
 // les DOM Manipulaties + 
-function validatePayment(field) {
+function validatePayment(veld) {
   const paymentMethod = document.querySelector('input[name="flexRadioDefault"]:checked + label #paymentMethod');
   if (paymentMethod) {
     const alertBox = document.querySelector(".alert-info");
@@ -295,16 +312,15 @@ function validatePayment(field) {
   }
 }
 
-function validateTerms(field, notification, errorArray, alertType) {
+function validateTerms(veld, melding, errorArray, alertType) {
   const voorwaarden = document.querySelector('input#voorwaarden:checked');
   if (!voorwaarden) {
-    // Display a danger alert
-    errorArray.push(`Je moet de algemene ${notification} accepteren.`);
+    errorArray.push(`Je moet de algemene ${melding} accepteren.`);
   }
 }
 
 
-// Hide the ALERT notifications via script
+// Hide the ALERT meldings via script
 window.addEventListener("load", function() {
   console.log("window loaded");
   const alerts = document.querySelectorAll(".alert");
